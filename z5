@@ -1,0 +1,21 @@
+async function mySortFunction() {
+  let res = await fetch('https://jsonplaceholder.typicode.com/posts')
+  let data = await res.json();
+  setTimeout(function() {
+    data.sort(function(a, b) {
+      return b.title.length - a.title.length;
+    });
+    let result = [];
+    for (let i = 0; i < data.length; i++) {
+      let Post = data[i];
+      let postInfo = {
+        id: Post.id,
+        titleLength: Post.title.length,
+        title: Post.title
+      };
+      result.push(postInfo);
+    }
+    console.log(result);
+  }, 0);
+}
+mySortFunction();
