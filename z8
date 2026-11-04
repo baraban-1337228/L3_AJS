@@ -1,0 +1,17 @@
+async function myTodosFunction(){
+let response=await fetch('https://jsonplaceholder.typicode.com/todos');
+let compl=await response.json();
+let result=[];
+for(let i=0;i<compl.length;i++){
+let tf=compl[i];
+if(tf.completed==false){
+let tf1={
+id:tf.id,
+completed:tf.completed
+};
+result.push(tf1);
+}
+}
+console.log(result);
+}
+myTodosFunction();
