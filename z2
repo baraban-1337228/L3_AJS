@@ -1,0 +1,25 @@
+function mySortFunction(data) {
+  setTimeout(function() {
+    data.sort(function(a, b) {
+      return a.name.localeCompare(b.name)
+    });
+    let result = [];
+    for (let i = 0; i < data.length; i++) {
+      let currentComment = data[i];
+      let CommentInfo = {
+        id: currentComment.id,
+        authorLength: currentComment.name.length,
+        email: currentComment.email
+      };
+      result.push(CommentInfo);
+    }
+    console.log(result);
+  }, 0);
+}
+fetch('https://jsonplaceholder.typicode.com/comments')
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(json) {
+    mySortFunction(json);
+  });
