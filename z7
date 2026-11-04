@@ -1,0 +1,13 @@
+async function myUsersFunction(){
+let res=await fetch('https://jsonplaceholder.typicode.com/users');
+let Users=await res.json();
+let result=Users.map(User=>({
+id:User.id,
+name:User.name,
+username:User.username,
+email:User.email,
+phone:User.phone
+}));
+console.log(result);
+}
+myUsersFunction();
