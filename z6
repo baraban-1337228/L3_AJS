@@ -1,0 +1,12 @@
+async function mySortFunction() {
+    let res = await fetch('https://jsonplaceholder.typicode.com/comments');
+    let data = await res.json();
+    data.sort((a, b) => a.name.localeCompare(b.name));
+    let result = data.map(currentComment => ({
+      id: currentComment.id,
+      authorLength: currentComment.name.length,
+      email: currentComment.email
+    }));
+    console.log(result);
+  }
+mySortFunction();
